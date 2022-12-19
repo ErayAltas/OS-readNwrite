@@ -13,17 +13,15 @@
 #include <unistd.h>
 
 // file_client programı, "file_manager_named_pipe" isimli named pipe'ı kullanarak file_manager programı ile iletişim kuracak.
-
-// file_client programı, kullanıcıdan bir komut alacak ve bu komutu file_manager programına gönderecek. Örneğin, "create file.txt" komutu geldiğinde, file_client programı file_manager programına "create" komutunu gönderecek ve dosya ismini de gönderecek.
-
+// file_client programı, kullanıcıdan bir komut alacak ve bu komutu file_manager programına gönderecek. 
+// Örneğin, "create file.txt" komutu geldiğinde, file_client programı file_manager programına "create" komutunu gönderecek ve dosya ismini de gönderecek.
 // file_client programı, file_manager programından gelen response'ları ekrana yazdıracak.
-
 // file_client programı, "exit" komutu geldiğinde iletişimi kesecek ve programı sonlandıracak.
 
 void *listenPipe()
 {
     int fd;
-    char *myfifo = "/tmp/myfifo";
+    char * myfifo = "/tmp/myfifo";
     mkfifo(myfifo, 0666);
     char cevap[80], komut[80];
     while (1)
